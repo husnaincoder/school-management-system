@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('student_enrollments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('student_id')->constrained('students')->cascadeOnDelete();
+            $table->foreignId('class_section_group_id')->constrained('class_section_groups')->cascadeOnDelete();
+            $table->string('roll_number')->nullable();
+            $table->date('admission_date')->nullable();
+            $table->enum('status', ['active','promoted','left'])->default('active');
+            $table->timestamps();
+            $table->softDeletes();
+        
+            $table->unique(['student_id']);
+            $table->index(['class_section_group_id'], 'enroll_group_session_idx');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('student_enrollments');
+    }
+};

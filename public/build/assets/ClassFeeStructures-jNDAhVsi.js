@@ -1,0 +1,1 @@
+import{j as e}from"./app-CEzYMjCJ.js";import u from"./ClassFeeStructuresIndex-CYK0hNVC.js";import"./AuthenticatedLayout-T8hfOhNI.js";import"./transition-C-W7V_p3.js";import"./PageBreadcrumbs-BRTB7b_Q.js";function m(t){const r=Array.isArray(t.feeStructures)?t.feeStructures:t.feeStructures?.data??[];return e.jsx(u,{...t,feeStructures:r})}export{m as default};
